@@ -8,7 +8,16 @@ from telegram.ext import (
     ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler,
     ContextTypes, filters
 )
-from config import BOT_TOKEN, OPENROUTER_API_KEY, HUGGINGFACE_TOKEN
+import os
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+
+# Safety check
+if not all([BOT_TOKEN, OPENROUTER_API_KEY, HUGGINGFACE_TOKEN]):
+    raise EnvironmentError("❌ Missing one or more required environment variables.")
+
 
 logging.basicConfig(level=logging.INFO)
 
