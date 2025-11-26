@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+stockbot_env/
+
+# Configuration & Secrets
+config.py
+.env
+
+# Logs & data
+*.log
+*.sqlite3
+*.csv
