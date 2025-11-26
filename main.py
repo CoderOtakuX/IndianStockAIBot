@@ -190,6 +190,12 @@ if __name__ == "__main__":
         application.run_polling()
     else:
         webhook_url = f"https://{render_hostname}/{BOT_TOKEN}"
-        application.bot.set_webhook(url=webhook_url)
-        print(f"✅ Webhook set: {webhook_url}")
-        flask_app.run(host="0.0.0.0", port=PORT)
+       import asyncio
+
+async def run_webhook():
+    await application.bot.set_webhook(url=webhook_url)
+    print(f"✅ Webhook set: {webhook_url}")
+    flask_app.run(host="0.0.0.0", port=PORT)
+
+asyncio.run(run_webhook())
+
